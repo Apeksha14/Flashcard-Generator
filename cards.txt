@@ -1,0 +1,12 @@
+{"type":"basic","front":"Who is the discoverer of dark matter?","back":"Vera Rubin"}
+{"type":"basic","front":"How many people serve in Congress?","back":"535"}
+{"type":"basic","front":"Since 1900, which party has had more presidents elected?","back":"Republican"}
+{"type":"basic","front":"Who was the last Democrat to win Texas in a presidential election?","back":"Jimmy Carter"}
+{"type":"basic","front":"Which city was never home to the U.S. Congress after the Revolutionary war?","back":"Baltimore"}
+{"type":"basic","front":"How many Supreme Court justices are there?","back":"9"}
+{"type":"cloze","text":"The March on Washington took place in 1963.","cloze":"1963"}
+{"type":"cloze","text":"In 2015, the U.S. re-established diplomatic relations with Cuba.","cloze":"Cuba"}
+{"type":"cloze","text":"Abraham Lincoln was the first Republican candidate to win a presidential election.","cloze":"Abraham Lincoln"}
+{"type":"cloze","text":"At the time it was first coined, the acronym “GOP” meant Gallant Old Party.","cloze":"Gallant Old Party"}
+{"type":"cloze","text":"As the modern two-party system developed,The Federalist Party became the primary opposition to the Democratic-Republicans.","cloze":"The Federalist Party"}
+{"type":"cloze","text":"Theodore Roosevelt ran for a newly-formed third party in opposition to the incumbent William Howard Taft in 1912.","cloze":"Theodore Roosevelt"}
