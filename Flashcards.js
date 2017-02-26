@@ -6,9 +6,6 @@ var BasicCard = require('./BasicCard.js'); // include BasicFlashcard Constructor
 
 var ClozeCard = require('./ClozeCard.js'); // // include ClozeFlashcard Constructor
 
-// Save our card log file to a variable.
-var cardFile = 'cards.txt';
-
 // Question to ask on script run.
 var runQuestion = {
    
@@ -77,8 +74,8 @@ var runPrompt = function () {
         if (answers.runType === 'View') 
           {
             
-            //viewCards();
-            viewFlashCards();
+            viewCards();
+            //viewFlashCards();
         
           } 
            else 
@@ -100,7 +97,7 @@ var createCardPrompt = function () {
     });
 };
 
-// Save the new card to log.txt.
+// Save the new card to cards.txt.
 var logCard = function (answers) {
     var appendText;
     if (answers.type === 'basic') {
@@ -116,93 +113,61 @@ var logCard = function (answers) {
             cloze: answers.cloze
         };
     }
-    fs.appendFile(cardFile, JSON.stringify(appendText) + '\r\n');
+
+    fs.appendFile("cards.txt", JSON.stringify(appendText) + '\r\n');
 };
 
 // Read cards from cards.txt and create a new card of that type with the correct constructor.
-// Then, for demonstration purposes: Run the constructor methods to show the card content.
-
-var basic = [];
-var cloze = [];
-
+// Then,run the constructor methods to show the card content.
 var viewCards = function () {
     // Read cards.
-    
     inquirer.prompt({
 
-            name: 'cardtype',
-            message: 'Choose the type of flashcard you would like to view.',
-            type: 'list',
-            choices: ['basic', 'cloze']
-        
-        }).then(function (answers) {
+        name: 'cardType',
+        message: 'Choose the type of flashcards you want to view?',
+        type: 'list',
+        choices: ['basic', 'cloze']
 
-        fs.readFile(cardFile, 'utf8', function (error, data) {
-        // Split on line breaks.
+
+    }).then(function (answers) {
+
+    fs.readFile("cards.txt", 'utf8', function (error, data) {
         if(error) console.log(error);
+        
+        // Split on line breaks.
+         var cards = data.split("\n");
 
-        var cards = data.split("\n");
         // For each card,
-
         cards.forEach(function (card) {
+            
             // If it's not a blank line,
             if (card.length > 0) {
                 // Parse the JSON.
                 card = JSON.parse(card);
 
                  // Create a basic card if the type is basic.
-                 if (card.type === "basic" && answers.cardtype === "basic") {
+                 if (card.type === "basic" && answers.cardType === "basic") {
 
                     var newBasicCard = new BasicCard(card.front, card.back);
                     // View the front of the basic flashcard
                     console.log(newBasicCard.showFront());
+                    
                 // Create a cloze card if the type is cloze.
                 } else {
 
-                 if (card.type === "cloze" && answers.cardtype === "cloze") {
+                 if (card.type === "cloze" && answers.cardType === "cloze") {
 
                     var newClozeCard = new ClozeCard(card.text, card.cloze);
                     // view the partial text of the cloze deleted flashcard
                     console.log(newClozeCard.showPartial());
+                    
                 }
 
               }
         
             }
-
-        });
     });
+});
 });
 
 };
-        
-
-var viewFlashCards = function(){
-
-    inquirer.prompt({
-
-            name: 'cardtype',
-            message: 'Choose the type of flashcard you would like to view.',
-            type: 'list',
-            choices: ['basic', 'cloze']
-        
-        }).then(function (answers) {
-
-        fs.readFile(cardFile, 'utf8', function (error, data) {
-        
-        // Split on line breaks.
-        if(error) console.log(error);
-
-        var cards = data.split("\n");
-        // For each card,
-        if(answers.cardtype === "basic")
-        {
-
-        console.log(basic);
-        } else if(answers.cardtype === "cloze") {
-        console.log(cloze); }
-
-    });
-
-});
-    }

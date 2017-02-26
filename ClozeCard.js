@@ -10,7 +10,7 @@ var ClozeCard = function (text, cloze) {
     // function that returns partial text
     this.showPartial = function () {
            
-        this.partial = this.text.replace(this.cloze,"......");          
+        this.partial = this.text.replace(this.cloze,"........");          
 
         return (this.partial);
     };
